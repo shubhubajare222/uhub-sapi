@@ -1,0 +1,10 @@
+http:
+  port: "8081"
+  
+db:
+  uhub:
+    host: "mysql-191968-0.cloudclusters.net"
+    port: "10216"
+    user: "admin"
+    password: "![9aySNLPe26x9aSC/rJLTpA==]"
+    database: "UHUB"

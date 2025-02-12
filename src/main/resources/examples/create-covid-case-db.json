@@ -1,0 +1,20 @@
+{
+  "in_source": "Web Form",
+  "in_case_type": "New Application",
+  "in_first_name": "John",
+  "in_last_name": "Doe",
+  "in_phone": "+1-555-123-4567",
+  "in_email": "john.doe@example.com",
+  "in_date_of_birth": "1990-05-15",
+  "in_national_id": "A123456789",
+  "in_national_id_type": "Passport",
+  "in_street_address": "123 Main St",
+  "in_city": "Los Angeles",
+  "in_state": "CA",
+  "in_postal": "90001",
+  "in_country": "USA",
+  "in_create_date": "2025-02-09T10:30:00Z",
+  "in_update_date": "2025-02-09T12:45:00Z",
+  "in_create_by": "admin_user",
+  "in_update_by": "system_update"
+}

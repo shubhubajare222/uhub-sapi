@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="create-covid-case-example" format="json">
+      <types:shape format="weave" example="examples/uhub-sapi-register-covid-case-request.json"><![CDATA[%dw 2.0
+
+type create_covid_case_example = {|
+  source: String, 
+  caseType: String, 
+  firstName: String, 
+  lastName: String, 
+  phone: String, 
+  email: String, 
+  dateOfBirth: String, 
+  nationalID: String, 
+  nationalIDType: String, 
+  address: {|
+    streetAddress: String, 
+    city: String, 
+    state: String, 
+    postal: String, 
+    country: String
+  |}
+|} {"example": "{\\\"source\\\":\\\"The johns hopkins hospital\\\",\\\"caseType\\\":\\\"positive\\\",\\\"firstName\\\":\\\"John\\\",\\\"lastName\\\":\\\"Nixon\\\",\\\"phone\\\":\\\"541-754-3010\\\",\\\"email\\\":\\\"john@gmail.com\\\",\\\"dateOfBirth\\\":\\\"1989-04-26\\\",\\\"nationalID\\\":\\\"209-49-6193\\\",\\\"nationalIDType\\\":\\\"SSN\\\",\\\"address\\\":{\\\"streetAddress\\\":\\\"1600 Pennsylvania Avenue NW\\\",\\\"city\\\":\\\"Washington\\\",\\\"state\\\":\\\"DC\\\",\\\"postal\\\":\\\"20500\\\",\\\"country\\\":\\\"USA\\\"}}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="create-covid-case-db" format="json">
+      <types:shape format="weave" example="examples/create-covid-case-db.json"><![CDATA[%dw 2.0
+
+type create_covid_case_db = {|
+  in_source: String, 
+  in_case_type: String, 
+  in_first_name: String, 
+  in_last_name: String, 
+  in_phone: String, 
+  in_email: String, 
+  in_date_of_birth: String, 
+  in_national_id: String, 
+  in_national_id_type: String, 
+  in_street_address: String, 
+  in_city: String, 
+  in_state: String, 
+  in_postal: String, 
+  in_country: String, 
+  in_create_date: String, 
+  in_update_date: String, 
+  in_create_by: String, 
+  in_update_by: String
+|} {"example": "{\\\"in_source\\\":\\\"Web Form\\\",\\\"in_case_type\\\":\\\"New Application\\\",\\\"in_first_name\\\":\\\"John\\\",\\\"in_last_name\\\":\\\"Doe\\\",\\\"in_phone\\\":\\\"+1-555-123-4567\\\",\\\"in_email\\\":\\\"john.doe@example.com\\\",\\\"in_date_of_birth\\\":\\\"1990-05-15\\\",\\\"in_national_id\\\":\\\"A123456789\\\",\\\"in_national_id_type\\\":\\\"Passport\\\",\\\"in_street_address\\\":\\\"123 Main St\\\",\\\"in_city\\\":\\\"Los Angeles\\\",\\\"in_state\\\":\\\"CA\\\",\\\"in_postal\\\":\\\"90001\\\",\\\"in_country\\\":\\\"USA\\\",\\\"in_create_date\\\":\\\"2025-02-09T10:30:00Z\\\",\\\"in_update_date\\\":\\\"2025-02-09T12:45:00Z\\\",\\\"in_create_by\\\":\\\"admin_user\\\",\\\"in_update_by\\\":\\\"system_update\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#b1eb47f9-7590-4ffb-abb8-1dbd27c9c7a6">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="create-covid-case-example"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="create-covid-case-db"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>
